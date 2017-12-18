@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta charset="utf-8" name="viewport"
+		content="width=device-width, initial-scale=1"
+		http-equiv="X-UA-Conpatible" />
+	<link rel="stylesheet"
+		href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script
+		src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+	<title>Registeration</title>
+	<style>
+.error {
+	color: blue
+}
+</style>
+</h:head>
+<h:body>
+	<div class="container">
+		<div class="panel panel-info">
+			<div class="panel-heading text-center">
+				Register
+				<div class="text-right">
+					<a href="Login.xhtml" class="button">Sign in</a>
+				</div>
+			</div>
+			<div class="panel-body">
+				<h:form method="post" action="Register">
+					<center>
+						<LABEL>All fields required</LABEL>
+					</center>
+					<div class="row">
+						<div class="form-group">
+							<label> Name</label>
+							<h:inputText styleClass="form-control" id="name"
+								value="#{regBean.name}" required="true"
+								requiredMessage="Enter name" p:placeholder="Name"
+								validatorMessage="Name should be alphabetic">
+								<f:validateRegex pattern="[aA-zZ]*"></f:validateRegex>
+							</h:inputText>
+							<h:messages for="name" styleClass="error"></h:messages>
+						</div>
+						<div class="form-group">
+							<label> Last Name</label>
+							<h:inputText styleClass="form-control" id="lastname"
+								value="#{regBean.lastName}" required="true"
+								requiredMessage="Enter lastname" p:placeholder="lastname"
+								validatorMessage="Name should be alphabetic">
+								<f:validateRegex pattern="[aA-zZ]*"></f:validateRegex>
+							</h:inputText>
+							<h:messages for="name" styleClass="error"></h:messages>
+						</div>
+						<div class="form-group">
+							<label>Email Address</label>
+							<h:inputText styleClass="form-control" id="email"
+								value="#{regBean.emailId}" required="true"
+								requiredMessage="Enter emailid" p:placeholder="Email Address"
+								validatorMessage="Email Id should be in *@*.com format">
+								<f:validateRegex
+									pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"></f:validateRegex>
+							</h:inputText>
+							<h:messages for="email" styleClass="error"></h:messages>
+						</div>
+						<div class="form-group">
+							<label>Phone Number</label>
+							<h:inputText styleClass="form-control" id="number"
+								value="#{regBean.phoneNumber}" required="true"
+								requiredMessage="Enter Number" p:placeholder="Number">
+							</h:inputText>
+						</div>
+						<div class="form-group">
+							<label>Username</label>
+							<h:inputText styleClass="form-control" id="username"
+								value="#{regBean.userName}" required="true"
+								requiredMessage="Enter username" p:placeholder="Username"></h:inputText>
+							<h:messages for="username" styleClass="error"></h:messages>
+						</div>
+						<div class="form-group">
+							<label>Password</label>
+							<h:inputSecret styleClass="form-control" id="password"
+								value="#{regBean.password}" required="true"
+								requiredMessage="Enter password" p:placeholder="Password"></h:inputSecret>
+							<h:messages for="password" styleClass="error"></h:messages>
+						</div>
+						<div class="form-group">
+							<h:selectOneRadio value="#{regBean.role}"
+								styleClass="form-control" id="checkbox">
+								<f:selectItem itemLabel="User" itemValue="false"></f:selectItem>
+								<f:selectItem itemLabel="Manager" itemValue="true"></f:selectItem>
+							</h:selectOneRadio>
+						</div>
+						<div class="form-group">
+							<label>fee</label>
+							<h:inputText styleClass="form-control" id="commison"
+								value="#{regBean.commison}" 
+								p:placeholder="commison"></h:inputText>
+						</div>
+					</div>
+					<div class="container">
+						<center>
+							<h:commandButton id="Register" value="Register"
+								action="#{regBean.Register}" class="btn btn-info" />
+						</center>
+					</div>
+				</h:form>
+			</div>
+		</div>
+	</div>
+</h:body>
+</html>

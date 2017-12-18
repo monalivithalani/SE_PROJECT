@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+<meta charset="ISO-8859-1"/>
+<title>result</title>
+<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1" http-equiv="X-UA-Conpatible" />
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<h:outputStylesheet library="css" name ="bootstrap.min.css"></h:outputStylesheet>
+</h:head>
+<h:body>
+	<div class="container">
+    <div class="panel panel-info">
+        <div class="panel-heading text-left">Hello, #{loginBean.getName()} 
+        	<div class="text-right">
+        		<a href = "Signin.xhtml" class="button">Sign Out</a> 
+        	</div>
+        </div>
+    </div>
+    </div>
+</h:body>
+</html>

@@ -14,6 +14,15 @@ public class SelectManager {
 	private String emailId;
 	private Integer phoneNumber;
 	private Integer commison;
+	private String userName;
+	
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
 
 	public String getName() {
 		return name;
@@ -58,7 +67,7 @@ public class SelectManager {
 		Connection con = null;
 		ExternalContext exc = FacesContext.getCurrentInstance().getExternalContext();
 		Map<String, Object> sMap = exc.getSessionMap();
-		String email = sMap.get("emailId").toString();
+		String userName = sMap.get("userName").toString();
 		// java.sql.Statement stmt = null;
 		try {
 			com.mysql.jdbc.jdbc2.optional.MysqlDataSource ds = new com.mysql.jdbc.jdbc2.optional.MysqlDataSource();
@@ -71,9 +80,9 @@ public class SelectManager {
 			// stmt = con.createStatement();
 			//man.setEmailId(email);
 			String s = emailId;
-			System.out.println(email);
+			//System.out.println(email);
 			System.out.println(emailId);
-			String sql = "UPDATE mmanager SET manId = '"+s+"' where emailId = '"+email+"'";
+			String sql = "UPDATE mmanager SET manId = '"+s+"' where userName = '"+userName+"'";
 			PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
 			ps.executeUpdate();
 			//ps.setBoolean(5, false);

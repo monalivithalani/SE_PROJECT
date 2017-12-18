@@ -18,11 +18,12 @@
 </h:head>
 <h:body>
 	<c:choose>
-		<c:when test="#{sessionScope.emailId == null}">
+		<c:when test="#{sessionScope.userName == null}">
 			<h2>Please login</h2>
 		</c:when>
 		<c:otherwise>
 			<h:form>
+			<h1>#{sessionScope.userName}</h1>
 				<h1>Stocks WatchList</h1>
 				<h:dataTable value="#{watchListBean.displayWatchList}" var="watch" border="2">
 					<h:column>
@@ -30,8 +31,8 @@
             #{watch.stock_name}
          </h:column>
 					<h:column>
-						<f:facet name="header">Email</f:facet>
-            #{watch.emailId}
+						<f:facet name="header">userName</f:facet>
+            #{watch.userName}
          </h:column>
 				</h:dataTable>
 				<h:commandButton value="Logout" action="#{loginBean.logout}"

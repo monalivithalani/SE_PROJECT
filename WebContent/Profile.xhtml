@@ -19,11 +19,12 @@
 </h:head>
 <h:body>
 	<c:choose>
-		<c:when test="#{sessionScope.emailId == null}">
+		<c:when test="#{sessionScope.userName == null}">
 			<h2>Please login</h2>
 		</c:when>
 		<c:otherwise>
 			<h:form>
+			<h1>#{sessionScope.userName}</h1>
 				<h1>Edit Profile</h1>
 				<h:dataTable value="#{loginBean.byUserName}" var="m" border="2">
 					<h:column>

@@ -1,13 +1,14 @@
 package main.com.stock.models;
 
 public class WatchList {
-	private String emailId;
+	private String userName;
 	private String stock_name;
-	public String getEmailId() {
-		return emailId;
+	
+	public String getUserName() {
+		return userName;
 	}
-	public void setEmailId(String emailId) {
-		this.emailId = emailId;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 	public String getStock_name() {
 		return stock_name;

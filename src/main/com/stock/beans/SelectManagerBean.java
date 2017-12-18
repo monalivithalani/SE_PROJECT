@@ -21,6 +21,16 @@ import main.com.stock.models.SelectManager;
 @ManagedBean(name = "ManagerBean")
 
 public class SelectManagerBean {
+	private String userName;
+	
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
 	private boolean role = true;
 	
 	public boolean isRole() {
@@ -37,7 +47,7 @@ public class SelectManagerBean {
 		Connection con1 = null;
 		ExternalContext exc = FacesContext.getCurrentInstance().getExternalContext();
 		Map<String, Object> sMap = exc.getSessionMap();
-		String email = sMap.get("emailId").toString();
+		String userName = sMap.get("userName").toString();
 		try {
 			com.mysql.jdbc.jdbc2.optional.MysqlDataSource ds = new com.mysql.jdbc.jdbc2.optional.MysqlDataSource();
 			ds.setServerName("localhost");

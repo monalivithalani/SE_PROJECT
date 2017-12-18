@@ -83,15 +83,15 @@ public class LoginBean {
 			con = ds.getConnection();
 
 			// Get a prepared SQL statement
-			String sql = "select emailId from mmanager where userName = ? and password = ? and verified = 1 or role = 0";
+			String sql = "select name from mmanager where userName = ? and password = ? and verified = 1 or role = 0";
 			PreparedStatement st = con.prepareStatement(sql);
 			st.setString(1, userName);
 			st.setString(2, password);
 			ResultSet rs = st.executeQuery();
 			if (rs.next()) {
 				ExternalContext exc = FacesContext.getCurrentInstance().getExternalContext();
-				this.setEmailId((rs.getString("emailId")));
-				FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("emailId", this.emailId);
+				this.setName((rs.getString("name")));
+				FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("userName", this.userName);
 				try {
 					exc.redirect(exc.getRequestContextPath() 
 							+ "/faces/Profile.xhtml");

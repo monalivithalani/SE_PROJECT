@@ -13,6 +13,8 @@ import javax.faces.context.FacesContext;
 public class Stock {
 	private String stock_name;
 	private String price;
+	private String userName;
+	
 	private String emailId;
 	
 	public String getEmailId() {
@@ -21,6 +23,14 @@ public class Stock {
 
 	public void setEmailId(String emailId) {
 		this.emailId = emailId;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 	public String getStock_name() {
@@ -44,7 +54,7 @@ public class Stock {
 		Connection con = null;
 		ExternalContext exc = FacesContext.getCurrentInstance().getExternalContext();
 		Map<String, Object> sMap = exc.getSessionMap();
-		String email = sMap.get("emailId").toString();
+		String userNam = sMap.get("userName").toString();
 		// java.sql.Statement stmt = null;
 		try {
 			com.mysql.jdbc.jdbc2.optional.MysqlDataSource ds = new com.mysql.jdbc.jdbc2.optional.MysqlDataSource();
@@ -56,16 +66,10 @@ public class Stock {
 			con = ds.getConnection();
 			String s1 = stock_name;
 			System.out.println(s1);
-			String sql = "Insert into watchlist(emailId, stock_name) values ('"+email+"', '" + s1 + "')";
+			String sql = "Insert into watchlist(userName, stock_name) values ('"+userNam+"', '" + s1 + "')";
 			PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
-			ps.setString(1, emailId);
-			ps.setString(2, stock_name);
-			int i = ps.executeUpdate();
 			
-			if(i>0) {
-				System.out.println(emailId);
-				System.out.println(stock_name);
-			}
+			int i = ps.executeUpdate();
 		} catch (Exception e) {
 			System.err.println("Exception: " + e.getMessage());
 		} finally {
